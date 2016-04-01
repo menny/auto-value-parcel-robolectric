@@ -12,6 +12,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        testParcel();
+    }
+
+    public static void testParcel() {
         TestModel testModel = TestModel.create("string1", "string2");
 
         Parcel p = Parcel.obtain();
