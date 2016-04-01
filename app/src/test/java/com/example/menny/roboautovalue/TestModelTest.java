@@ -13,4 +13,14 @@ public class TestModelTest {
     public void testParcel() {
         MainActivity.testParcel();
     }
+
+    @Test
+    public void testParcel2() {
+        MainActivity.testParcel2();
+    }
+
+    @Test
+    public void testParcelC() {
+        MainActivity.testParcelC();
+    }
 }

@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         testParcel();
+        testParcel2();
+        testParcelC();
     }
 
     public static void testParcel() {
@@ -22,6 +24,30 @@ public class MainActivity extends AppCompatActivity {
         p.writeParcelable(testModel, 0);
         p.setDataPosition(0);
         TestModel value = p.readParcelable(testModel.getClass().getClassLoader());
+        p.recycle();
+
+        if (!value.equals(testModel)) throw new RuntimeException();
+    }
+
+    public static void testParcel2() {
+        TestModel2 testModel = TestModel2.create("string1", "string2");
+
+        Parcel p = Parcel.obtain();
+        p.writeParcelable(testModel, 0);
+        p.setDataPosition(0);
+        TestModel2 value = p.readParcelable(testModel.getClass().getClassLoader());
+        p.recycle();
+
+        if (!value.equals(testModel)) throw new RuntimeException();
+    }
+
+    public static void testParcelC() {
+        ConcreteModel testModel = new ConcreteModel("string 1", "String 2");
+
+        Parcel p = Parcel.obtain();
+        p.writeParcelable(testModel, 0);
+        p.setDataPosition(0);
+        ConcreteModel value = p.readParcelable(testModel.getClass().getClassLoader());
         p.recycle();
 
         if (!value.equals(testModel)) throw new RuntimeException();
